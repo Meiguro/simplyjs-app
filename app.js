@@ -5,7 +5,7 @@ simply.setText({
 
 // a-z 0-9 _
 
-var cat_text = 'Feline';
+var catText = 'Feline';
 
 simply.on('singleClick', function(e) {
   if (e.button === 'select') {
