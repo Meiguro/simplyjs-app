@@ -4,9 +4,9 @@ simply.setText({
 });
 
 simply.on('singleClick', function(e) {
-  if (e.button == 'select') {
+  if (e.button === 'select') {
     simply.setText({ body: 'awesome' });
-  } else if (e.button == 'up') {
+  } else if (e.button === 'up') {
     simply.setText({ subtitle: '(^_^)' });
   } else {
     simply.setText({ title: 'Goodbye' });
