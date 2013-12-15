@@ -11,7 +11,7 @@ simply.on('singleClick', function(e) {
   if (e.button === 'select') {
     simply.setText({ body: 'awesome' });
   } else if (e.button === 'up') {
-    simply.setText({ subtitle: cat_text });
+    simply.setText({ subtitle: catText });
   } else {
     simply.setText({ title: 'Goodbye' });
   }
