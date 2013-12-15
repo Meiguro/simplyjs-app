@@ -3,13 +3,18 @@ simply.setText({
   subtitle: 'Cruel',
 });
 
-// a-z 0-9 _
-
 var catText = 'Feline';
+
+var fruitList = [
+  'apple',
+  'orange',
+  'mango',
+  'kiwi',
+];
 
 simply.on('singleClick', function(e) {
   if (e.button === 'select') {
-    simply.setText({ body: 'awesome' });
+    simply.setText({ body: fruitList[2] });
   } else if (e.button === 'up') {
     simply.setText({ subtitle: catText });
   } else {
