@@ -5,25 +5,23 @@ simply.setText({
 
 var catText = 'Feline';
 
-var fruitList = [
-  'apple', // 0
-  'orange', // 1
-  'mango', // 2
-  'kiwi', // 3
-];
-
-// Math.random() -> 0.5
-// Math.random() * fruitList.length -> 2
-// Math.floor(2.232) = 2
-
-var fruitIndex = 0;
-
+/*
 var getRandomIndex = function() {
   return Math.floor(Math.random() * fruitList.length);
 };
+*/
+
+var fruitList = [
+  { title: 'apple' }, // 0
+  { title: 'orange' subtitle: '!!' }, // 1
+  { title: 'mango', body: 'this is really good' }, // 2
+  { title: 'kiwi' }, // 3
+];
+
+var fruitIndex = 0;
 
 var updateFruit = function() {
-    simply.setText({ body: fruitList[fruitIndex] });
+    simply.setText(fruitList[fruitIndex]);
 };
 
 simply.on('singleClick', function(e) {
