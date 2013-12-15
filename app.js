@@ -6,8 +6,10 @@ simply.setText({
 simply.on('singleClick', function(e) {
   if (e.button == 'select') {
     simply.setText({ body: 'awesome' });
-  } else {
+  } else if (e.button == 'up') {
     simply.setText({ subtitle: '(^_^)' });
+  } else {
+    simply.setText({ title: 'Goodbye' });
   }
 });
 
