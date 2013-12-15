@@ -8,3 +8,5 @@ simply.on('singleClick', function(e) {
     simply.setText({ body: 'awesome' });
   }
 });
+
+simply.begin();
