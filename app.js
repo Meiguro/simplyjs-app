@@ -1,3 +1,5 @@
+var localStorage = window.localStorage;
+
 simply.setText({
   title: 'Hello World!',
   subtitle: 'Cruel',
@@ -25,10 +27,25 @@ var dirs = [
 
 var dirIndex = 0;
 
+var saveState = function() {
+  localStorage.setItem('pos', pos);
+  localStorage.setItem('dirIndex', dirIndex);
+};
+
+var loadState = function() {
+  pos = localStorage.getItem('pos');
+  dirIndex = localStorage.getItem('dirIndex');
+};
+
 var step = function() {
   var dir = dirs[dirIndex];
   pos.x += dir.x;
   pos.y += dir.y;
+  saveState();
+  
+  if (pos.x == 3 && pos.y == 4) {
+    Pebble.showSimpleNotificcation('Event', 'There are dragons before you.');
+  }
 };
 
 var changeDir = function(delta) {
@@ -41,14 +58,18 @@ var changeDir = function(delta) {
   simply.setText({ subtitle: dirs[dirIndex].name });
 }
 
+var showPos = function() {
+  simply.setText({
+    title: map[pos.y][pos.x],
+    body: pos.x + ' ' + pos.y,
+  });
+}
+
 simply.on('singleClick', function(e) {
   switch (e.button) {
     case 'select':
       step();
-      simply.setText({
-        title: map[pos.y][pos.x],
-        body: pos.x + ' ' + pos.y,
-      });
+      showPos();
       break;
     case 'up':
       changeDir(-1);
@@ -65,4 +86,7 @@ simply.on('longClick', function(e) {
 
 simply.begin();
 
-requestWeather();
+loadState();
+
+showPos();
+changeDir(1);
