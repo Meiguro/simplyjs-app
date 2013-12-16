@@ -5,11 +5,11 @@ simply.setText({
 
 var map = [
   ['x', 'x', 'x', 'x', 'x', 'x'],
-  ['x', 'a', 'x', 'c', 'x', 'x'],
-  ['x', 'a', 'o', 'c', 'x', 'x'],
-  ['x', 'x', 'b', 'x', 'e', 'x'],
-  ['x', 'x', 'x', 'x', 'f', 'x'],
-  ['x', 'x', 'x', 'x', 'x', 'g'],
+  ['x', 'e', 'v', 'c', 'x', 'x'],
+  ['x', 'a', 'o', 'f', 'x', 'x'],
+  ['x', 'n', 'b', 'x', 'h', 'x'],
+  ['s', 'x', 'd', 'd', 'f', 'x'],
+  ['x', 'x', 'x', 'x', 'r', 'g'],
 ];
 
 // map[y][x] 
@@ -45,7 +45,10 @@ simply.on('singleClick', function(e) {
   switch (e.button) {
     case 'select':
       step();
-      simply.setText({ title: map[pos.y][pos.x] });
+      simply.setText({
+        title: map[pos.y][pos.x],
+        body: pos.x + ' ' pos.y,
+      });
       break;
     case 'up':
       changeDir(-1);
