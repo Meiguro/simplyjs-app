@@ -33,10 +33,13 @@ var saveState = function() {
 };
 
 var loadState = function() {
-  var newPos = localStorage.getItem('pos');
-  if (newPos) {
-    pos = newPos;
-    dirIndex = localStorage.getItem('dirIndex');
+  var savedPos = localStorage.getItem('pos');
+  if (savedPos !== null) {
+    pos = savedPos;
+  }
+  var savedDirIndex = localStorage.getItem('dirIndex');
+  if (savedDirIndex !== null) {
+    dirIndex = savedDirIndex;
   }
 };
 
