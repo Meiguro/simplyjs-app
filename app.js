@@ -3,41 +3,56 @@ simply.setText({
   subtitle: 'Cruel',
 });
 
-var catText = 'Feline';
-
-/*
-var getRandomIndex = function() {
-  return Math.floor(Math.random() * fruitList.length);
-};
-*/
-
-var locations = [
-  'London,uk',
-  'San+Jose,us',
-  'Palo+Alto,us',
+var map = [
+  ['x', 'x', 'x', 'x', 'x', 'x'],
+  ['x', 'a', 'x', 'c', 'x', 'x'],
+  ['x', 'a', 'o', 'c', 'x', 'x'],
+  ['x', 'x', 'b', 'x', 'e', 'x'],
+  ['x', 'x', 'x', 'x', 'f', 'x'],
+  ['x', 'x', 'x', 'x', 'x', 'g'],
 ];
 
-var locationIndex = 0;
+// map[y][x] 
 
-var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
+var pos = { x: 2, y: 2 };
 
-var requestWeather = function() {
-  var url = weatherUrl + locations[locationIndex];
-  var success = function(data) {
-    simply.setText({ subtitle: data.main.temp.toString() });
-  };
-  var failure = function(data, status) {
-    simply.setText({ subtitle: ':( ' + status }, true);
-  };
-  ajax({ url: url, type: 'json' }, success, failure);
-  simply.setText({ subtitle: 'Loading...' });
+var dirs = [
+  { x: 0, y: 1, name: 'North' }, // N
+  { x: 1, y: 0, name: 'East' }, // E
+  { x: 0, y: -1, name: 'South' }, // S
+  { x: -1, y: 0, name: 'West' }, // W
+];
+
+var dirIndex = 0;
+
+var step = function() {
+  var dir = dirs[dirIndex];
+  pos.x += dir.x;
+  pos.y += dir.y;
 };
-  
+
+var changeDir = function(delta) {
+  dirIndex += delta;
+  if (dirIndex >= dirs.length) {
+    dirIndex = 0;
+  } else if (dirIndex < 0) {
+    dirIndex = dirs.length - 1;
+  }
+  simply.setText({ subtitle: dirs[dirIndex].name });
+}
+
 simply.on('singleClick', function(e) {
-  console.log('Pressed ' + e.button);
-  if (e.button == 'down') {
-    if (++locationIndex >= locations.length) { locationIndex = 0; }
-    requestWeather();
+  switch (e.button) {
+    case 'select':
+      step();
+      simply.setText({ title: map[pos.y][pos.x] });
+      break;
+    case 'up':
+      changeDir(-1);
+      break;
+    case 'down':
+      changeDir(1);
+      break;
   }
 });
 
