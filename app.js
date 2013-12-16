@@ -47,7 +47,7 @@ simply.on('singleClick', function(e) {
       step();
       simply.setText({
         title: map[pos.y][pos.x],
-        body: pos.x + ' ' pos.y,
+        body: pos.x + ' ' + pos.y,
       });
       break;
     case 'up':
