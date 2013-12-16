@@ -33,8 +33,8 @@ var saveState = function() {
 };
 
 var loadState = function() {
-  pos = localStorage.getItem('pos');
-  dirIndex = localStorage.getItem('dirIndex');
+  pos = localStorage.getItem('pos') || pos;
+  dirIndex = localStorage.getItem('dirIndex') || dirIndex;
 };
 
 var step = function() {
