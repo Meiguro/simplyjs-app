@@ -34,7 +34,7 @@ var saveState = function() {
 
 var loadState = function() {
   var savedPos = localStorage.getItem('pos');
-  if (savedPos !== null) {
+  if (savedPos !== null && typeof savedPos.x == 'number' && typeof savedPos.y == 'number') {
     pos = savedPos;
   }
   var savedDirIndex = localStorage.getItem('dirIndex');
