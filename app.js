@@ -47,7 +47,7 @@ var step = function() {
   saveState();
   
   if (pos.x == 3 && pos.y == 4) {
-    Pebble.showSimpleNotificcation('Event', 'There are dragons before you.');
+    Pebble.showSimpleNotificationOnPebble('Event', 'There are dragons before you.');
   }
 };
 
