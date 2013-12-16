@@ -34,10 +34,15 @@ var requestWeather = function() {
 };
   
 simply.on('singleClick', function(e) {
+  console.log('Pressed ' + e.button);
   if (e.button == 'down') {
     if (++locationIndex >= locations.length) { locationIndex = 0; }
     requestWeather();
   }
+});
+
+simply.on('longClick', function(e) {
+  simply.setText({ title: catText }, true);
 });
 
 simply.begin();
