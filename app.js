@@ -11,28 +11,17 @@ var getRandomIndex = function() {
 };
 */
 
-var fruitList = [
-  { title: 'apple' }, // 0
-  { title: 'orange' subtitle: '!!' }, // 1
-  { title: 'mango', body: 'this is really good' }, // 2
-  { title: 'kiwi' }, // 3
-];
+var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=London,uk';
 
-var fruitIndex = 0;
-
-var updateFruit = function() {
-    simply.setText(fruitList[fruitIndex]);
+var requestWeather = function() {
+  ajax({ url: weatherUrl, type: 'json' }, function(data) {
+    simply.setText({ subtitle: data.main });
+  });
 };
 
 simply.on('singleClick', function(e) {
-  if (e.button === 'select') {
-    // Do nothing
-  } else if (e.button === 'up') {
-    if (--fruitIndex < 0) { fruitIndex = fruitList.length - 1; }
-    updateFruit();
-  } else if (e.button === 'down') {
-    if (++fruitIndex >= fruitList.length) { fruitIndex = 0; }
-    updateFruit();
+  if (e.button == 'select') {
+    requestWeather();
   }
 });
 
