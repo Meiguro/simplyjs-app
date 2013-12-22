@@ -1,6 +1,4 @@
-var simply = simply || {},
-    ajax = ajax || {},
-    Pebble = Pebble || {};
+/* global Pebble, ajax, simply */
 
 simply.setText({
   title: 'Hello World!',
