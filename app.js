@@ -1,4 +1,6 @@
-var localStorage = window.localStorage;
+var simply = simply || {},
+    ajax = ajax || {},
+    Pebble = Pebble || {};
 
 simply.setText({
   title: 'Hello World!',
@@ -13,8 +15,6 @@ var map = [
   ['s', 'x', 'd', 'd', 'f', 'x'],
   ['x', 'x', 'x', 'x', 'r', 'g'],
 ];
-
-// map[y][x] 
 
 var pos = { x: 2, y: 2 };
 
@@ -62,14 +62,14 @@ var changeDir = function(delta) {
     dirIndex = dirs.length - 1;
   }
   simply.setText({ subtitle: dirs[dirIndex].name });
-}
+};
 
 var showPos = function() {
   simply.setText({
     title: map[pos.y][pos.x],
     body: pos.x + ' ' + pos.y,
   });
-}
+};
 
 simply.on('singleClick', function(e) {
   switch (e.button) {
@@ -85,12 +85,6 @@ simply.on('singleClick', function(e) {
       break;
   }
 });
-
-simply.on('longClick', function(e) {
-  simply.setText({ title: catText }, true);
-});
-
-simply.begin();
 
 loadState();
 
