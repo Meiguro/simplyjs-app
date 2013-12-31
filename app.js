@@ -1,3 +1,6 @@
 /* global simply */
 
-simply.title('Hello World!', true);
+simply.text({
+    title: 'Hello!',
+    subtitle: 'How are you?',
+}, true);
